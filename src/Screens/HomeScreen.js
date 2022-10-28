@@ -1,17 +1,31 @@
-import { View, Text } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import MainImg from '../assets/MainImg.jpg';
 
-const myIcon = <Icon name="rocket" size={30} color="#900" />;
-
-const HomeScreen = () => {
+export default function HomeScreen() {
   return (
-    <View style={{backgroundColor:'#fff'}}>
-      <Text >HomeScreen</Text>
-      {myIcon}
+    <View style={styles.containrt}>
+      <Image source={MainImg} style={styles.Img}/>
+      <Text style={styles.HomeTitle}>MD Holdings (Pvt) Ltd</Text>
     </View>
   )
 }
 
-export default HomeScreen
+const styles = StyleSheet.create({
+  containrt:{
+    flex:1,
+    alignItems:'center',
+    backgroundColor:'white'
+  },
+  Img:{
+    width:'100%',
+    height:'80%',
+    resizeMode:'cover'
+  },
+  HomeTitle:{
+    fontSize:30,
+    fontWeight:'bold',
+    marginTop:20
+  }
+})
