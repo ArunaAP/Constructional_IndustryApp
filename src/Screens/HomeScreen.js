@@ -9,6 +9,8 @@ export default function HomeScreen() {
       <Image source={MainImg} style={styles.Img}/>
       <Text style={styles.HomeTitle}>MD Holdings (Pvt) Ltd</Text>
     </View>
+
+    
   )
 }
 
