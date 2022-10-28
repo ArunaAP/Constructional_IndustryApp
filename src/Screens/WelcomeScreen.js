@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View ,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View ,TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 
 export default function WelcomeScreen() {
@@ -9,7 +9,7 @@ export default function WelcomeScreen() {
 
 
   return (
-    <View style = {styles.container}>
+    <ScrollView style = {styles.container}>
               {/* For summary */}
               <View style = {styles.sumContainer}>
               <Text style = {styles.txtSummery}>Summary</Text>
@@ -82,7 +82,7 @@ export default function WelcomeScreen() {
             <Text style = {styles.txtAddItem}>Confirm</Text>
           </TouchableOpacity>
     </View>
-    </View>
+    </ScrollView>
   )
 }
 
