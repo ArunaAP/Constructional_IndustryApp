@@ -11,6 +11,8 @@ const HomeScreen = () => {
       <Text >HomeScreen</Text>
       {myIcon}
     </View>
+
+    
   )
 }
 
