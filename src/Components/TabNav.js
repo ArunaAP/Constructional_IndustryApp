@@ -1,7 +1,6 @@
 import { View, Text, Image, StyleSheet } from 'react-native'
 import React from 'react'
 
-import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -26,11 +25,11 @@ const TabNav = () => {
             tabBarIconStyle:{color:'white', fontWeight:'bold',fontSize:5},
             tabBarStyle: {backgroundColor: '#306754', height:60,borderTopRightRadius:20,borderTopLeftRadius:20},
             tabBarInactiveTintColor:'#fff',
-            tabBarLabelStyle: {color:'white', fontSize:15,marginBottom:10}
+            tabBarActiveTintColor:'#a3c1ac',
         }}>
             <Tab.Screen name='Home' component={HomeScreen} options={{
-                tabBarIcon: () => (
-                  <Icon name="home" size={30} color="#fff" />
+                tabBarIcon: ({size, color }) => (
+                  <Icon name="home" size={size} color={color} />
                  ),         
             }}/>
             <Tab.Screen name='order' component={OrderScreen} options={{
@@ -39,13 +38,13 @@ const TabNav = () => {
                  ),
             }}/>
             <Tab.Screen name='add' component={AddScreen} options={{
-                  tabBarIcon: ({ color }) => (
-                    <Icon name="plus-square" size={30} color="#fff" />
+                  tabBarIcon: ({size, color }) => (
+                    <Icon name="plus-square" size={size} color={color} />
                  ),
             }}/>
             <Tab.Screen name='welcome' component={WelcomeScreen} options={{
-                  tabBarIcon: ({ color }) => (
-                    <Icon name="user" size={30} color="#fff" />
+                  tabBarIcon: ({size, color }) => (
+                    <Icon name="user" size={size} color={color} />
                  ),
             }}/>
             

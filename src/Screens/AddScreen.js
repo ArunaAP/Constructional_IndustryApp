@@ -3,13 +3,32 @@ import {
                   Text,
                   View,
                   TextInput,
-                  TouchableOpacity  } from 'react-native'
-import React from 'react'
+                  TouchableOpacity,
+                  ScrollView  } from 'react-native'
+import React, { useState } from 'react'
 import SelectList from 'react-native-dropdown-select-list'
+import { ref, set } from "firebase/database";
+import { db } from '../Components/config';
 
 
 
 export default function AddScreen() {
+  const [desc, setDesc] = useState('');
+  const [qty, setQty] = useState('');
+
+ function create () {
+  set(ref(db, 'users/' + desc), {
+    desc: desc,
+    qty: qty
+  }).then(() => {
+    alert('data added');
+  }).catch((error) => {
+    alert(error);
+  });
+ };
+
+
+
 
   const [selected, setSelected] = React.useState("");
   const [text, onChangeText] = React.useState("");
@@ -24,7 +43,7 @@ export default function AddScreen() {
 
 
   return (
-    <View style = {styles.container}>
+    <ScrollView style = {styles.container}>
       {/* view for add new test  */}
     <View style = {styles.addNewText} >
     <Text style = {styles.addNewText}> Add New Item </Text>
@@ -48,9 +67,9 @@ export default function AddScreen() {
     {/* View for textArea */}
     <View style = {styles.descriptionContainer}>
             <TextInput
+                value={desc} 
                 style={styles.input}
-                onChangeText={onChangeText}
-                value={text}
+                onChangeText={setDesc}
               />
     </View>
 
@@ -63,8 +82,8 @@ export default function AddScreen() {
                 
                 <TextInput
                 style={styles.input2}
-                onChangeText={onChangeText}
-                value={text}
+                onChangeText={(qty) => {setQty(qty)}}
+                value={qty}
                 keyboardType="numeric"
               />
 
@@ -74,7 +93,8 @@ export default function AddScreen() {
     <View style = {styles.addBtnContainer}>
           <TouchableOpacity
             style = {styles.btnAddItem}
-            onPress = {() => console.log("success")}
+            onPress = {create}
+            
           >
             <Text style = {styles.txtAddItem}>Add Item</Text>
           </TouchableOpacity>
@@ -83,7 +103,7 @@ export default function AddScreen() {
 
 
 
-    </View>
+    </ScrollView>
   )
 }
 

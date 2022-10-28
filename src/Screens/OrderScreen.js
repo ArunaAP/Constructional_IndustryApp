@@ -6,7 +6,6 @@ import DatePicker from 'react-native-datepicker'
 
 export default function OrderScreen() {
   
-  const date = "2022-02-14"
 
   const [selected, setSelected] = React.useState("");
   
@@ -31,8 +30,8 @@ export default function OrderScreen() {
           <Text style={styles.itemText}>Description</Text>
           <Text style={styles.itemText}>Qty</Text>
         </View>
-        <View style={styles.item}>
           
+        <View style={styles.item}>
           <TextInput style={styles.itemInput}/>
           <TextInput style={styles.itemInput}/>
           <TextInput style={styles.itemInput}/>
@@ -51,33 +50,6 @@ export default function OrderScreen() {
         <View style={styles.inputView}>
           <Text style={styles.labalName}>Delivery Address</Text>
           <TextInput style={styles.textAreaInput} />
-        </View>
-        <View>
-          <Text style={styles.labalName}>Required Date</Text>
-          <DatePicker
-          style={{width:'95%',borderRadius:20}}
-          date={date}
-          mode="date"
-          placeholder="select date"
-          format="YYYY-MM-DD"
-          minDate="2016-05-01"
-          maxDate="2016-06-01"
-          confirmBtnText="Confirm"
-          cancelBtnText="Cancel"
-          customStyles={{
-            dateIcon: {
-              position: 'absolute',
-              left: 275,
-              top: 4,
-              marginLeft: 0
-            },
-            dateInput: {
-              marginLeft: 0
-            }
-            // ... You can check the source to find the other keys.
-          }}
-          onDateChange={(date) => {setState({date: date})}}
-        />
         </View>
         
         <View style={styles.inputView}>
