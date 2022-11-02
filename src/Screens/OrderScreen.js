@@ -1,12 +1,9 @@
 import { StyleSheet, Text, View, TextInput, ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import SelectList from 'react-native-dropdown-select-list'
-import DatePicker from 'react-native-datepicker'
-
 
 export default function OrderScreen() {
   
-
   const [selected, setSelected] = React.useState("");
   
   const data = [{key:'1',value:'Panadura S1'},{key:'2',value:'Panadura S2'},{key:'2',value:'Colombo S1'}];

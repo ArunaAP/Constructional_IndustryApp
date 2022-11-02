@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
-
-import MainImg from '../assets/MainImg.jpg';
+import MainImg from '../assets/MainImg.jpg'; //import jpg from assert folder
 
 export default function HomeScreen() {
   return (
@@ -9,11 +8,10 @@ export default function HomeScreen() {
       <Image source={MainImg} style={styles.Img}/>
       <Text style={styles.HomeTitle}>MD Holdings (Pvt) Ltd</Text>
     </View>
-
-    
   )
 }
 
+// constace for styles
 const styles = StyleSheet.create({
   containrt:{
     flex:1,
