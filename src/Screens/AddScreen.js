@@ -15,31 +15,31 @@ import { db } from '../Components/config';
 export default function AddScreen() {
   const [desc, setDesc] = useState('');
   const [qty, setQty] = useState('');
-
- function create () {
-  set(ref(db, 'users/' + desc), {
-    desc: desc,
-    qty: qty
-  }).then(() => {
-    alert('data added');
-  }).catch((error) => {
-    alert(error);
-  });
- };
-
-
-
-
+  
+  
+  
+  
   const [selected, setSelected] = React.useState("");
   const [text, onChangeText] = React.useState("");
   
   const data = [  
-
-                              {key:'1',value:'Cement'}  ,
-                              {key: '2',value : 'Bricks'} ,
-
-];
-
+    
+    {key:'1',value:'Cement'}  ,
+    {key: '2',value : 'Bricks'} ,
+    
+  ];
+  
+  
+   function create () {
+    set(ref(db, 'users/' + desc), {
+      desc: desc,
+      qty: qty
+    }).then(() => {
+      alert('data added');
+    }).catch((error) => {
+      alert(error);
+    });
+   };
 
 
   return (
