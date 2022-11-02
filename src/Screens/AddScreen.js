@@ -18,6 +18,15 @@ export default function AddScreen() {
   const [item, setItem] = useState('');
   const [qty, setQty] = useState('');
 
+  
+  
+  
+  
+  const [selected, setSelected] = React.useState("");
+  const [text, onChangeText] = React.useState("");
+  
+
+
   //constance for data in the dropdown
   const data = [  
 
@@ -39,6 +48,7 @@ export default function AddScreen() {
    });
   console.log(item)
  };
+
 
   return (
     <ScrollView style = {styles.container}>
