@@ -6,15 +6,18 @@ import {
                   TouchableOpacity,
                   ScrollView  } from 'react-native'
 import React, { useState } from 'react'
-import SelectList from 'react-native-dropdown-select-list'
-import { ref, set } from "firebase/database";
-import { db } from '../Components/config';
-
+import SelectList from 'react-native-dropdown-select-list'  //import select list 
+import { ref, set } from "firebase/database";  //import firebase configuration file 
+import { db } from '../Components/config';   //import db configuration file for connect the db
 
 
 export default function AddScreen() {
+
+  //create use states for set values
   const [desc, setDesc] = useState('');
+  const [item, setItem] = useState('');
   const [qty, setQty] = useState('');
+
   
   
   
@@ -22,87 +25,88 @@ export default function AddScreen() {
   const [selected, setSelected] = React.useState("");
   const [text, onChangeText] = React.useState("");
   
+
+
+  //constance for data in the dropdown
   const data = [  
-    
-    {key:'1',value:'Cement'}  ,
-    {key: '2',value : 'Bricks'} ,
-    
-  ];
-  
-  
-   function create () {
-    set(ref(db, 'users/' + desc), {
-      desc: desc,
-      qty: qty
-    }).then(() => {
-      alert('data added');
-    }).catch((error) => {
-      alert(error);
-    });
-   };
+
+    {key:'Cement',value:'Cement'}  ,
+    {key: 'Bricks',value : 'Bricks'} ,
+
+];
+
+//create function for insert data in to the database
+ function create () {
+   set(ref(db, 'users/' + qty), {
+     desc: desc,
+     qty: qty,
+     item : item
+   }).then(() => {
+     alert('data added');
+   }).catch((error) => {
+    alert(error);
+   });
+  console.log(item)
+ };
 
 
   return (
     <ScrollView style = {styles.container}>
-      {/* view for add new test  */}
-    <View style = {styles.addNewText} >
-    <Text style = {styles.addNewText}> Add New Item </Text>
-    </View>
 
-    {/* view for item text */}
-    <View style = {styles.itemText}>
-      <Text style = {styles.itemText}>Item</Text>
+            {/* view for add new test  */}
+          <View style = {styles.addNewText} >
+            <Text style = {styles.addNewText}> Add New Item </Text>
+          </View>
 
-              {/* view for dropDown */}
-              <View style = {styles.dropDown}>
-              <SelectList setSelected={setSelected} data={data} onSelect={() => alert(selected)} />
-              </View>
+          {/* view for item text */}
+          <View style = {styles.itemText}>
+            <Text style = {styles.itemText}>Item</Text>
 
-    </View>
-      {/* View for Description */}
-    <View style = {styles.textDescription}>
+            {/* view for dropDown */}
+            <View style = {styles.dropDown}>
+              <SelectList setSelected={setItem} data={data} onPress={(item) => {setItem(item)}} />
+            </View>
+
+           </View>
+           {/* View for Description */}
+           <View style = {styles.textDescription}>
                 <Text style = {styles.textDescription}>Description</Text>
-    </View>
+            </View>
 
-    {/* View for textArea */}
-    <View style = {styles.descriptionContainer}>
+           {/* View for textArea */}
+           <View style = {styles.descriptionContainer}>
             <TextInput
                 value={desc} 
                 style={styles.input}
                 onChangeText={setDesc}
               />
-    </View>
+            </View>
 
-    {/* View for Quantity  */}
-    <View style = {styles.quantityContainer}>
-
+            {/* View for Quantity  */}
+            <View style = {styles.quantityContainer}>
                 <View style = {styles.quantitySemiContainer}>
-                  <Text style = {styles.textQuantity}>Quantity</Text>
-                </View>
+                <Text style = {styles.textQuantity}>Quantity</Text>
+            </View>
                 
-                <TextInput
+            <TextInput
                 style={styles.input2}
                 onChangeText={(qty) => {setQty(qty)}}
                 value={qty}
                 keyboardType="numeric"
               />
 
-    </View>
+             </View>
 
-    {/* View For TouchableOpacity */}
-    <View style = {styles.addBtnContainer}>
-          <TouchableOpacity
-            style = {styles.btnAddItem}
-            onPress = {create}
+            {/* View For TouchableOpacity */}
+            <View style = {styles.addBtnContainer}>
+            <TouchableOpacity
+                 style = {styles.btnAddItem}
+                 onPress = {create}
             
-          >
+             >
             <Text style = {styles.txtAddItem}>Add Item</Text>
-          </TouchableOpacity>
-    </View>
-
-
-
-
+            </TouchableOpacity>
+            </View>
     </ScrollView>
   )
 }
